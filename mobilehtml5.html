@@ -2,37 +2,142 @@
 <html >
 <head>
 	<title>Mobile HTML 5 Code Camp</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="font-awesome-4.6.3/css/font-awesome.min.css">
+	<style>
+		
+	</style>
 	<script src="jQuery1.12.js"></script>
 	<script src="fabric.js"></script>
+	<script src="bootstrap.js"></script>
 </head>
 <body>
-	<h1>logos</h1>
-	<img src="devconlogo.png" />
 	<br>
-	<h1>videos</h1>
+	<div class="container">
+		<!--IMAGES-->
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h4>LOGOS</h4>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="devconlogo.png" class="img-rounded"/> <br><div class="alert alert-success" role="alert">Adds rounded corners to an image</div>
+					</div>
+					<div class="col-md-4">
+						<img src="devconlogo.png" class="img-circle"/><div class="alert alert-success" role="alert">Shapes the image to a circle</div>
+					</div>
+					<div class="col-md-4">
+						<img src="devconlogo.png" class="img-thumbnail"/><div class="alert alert-success" role="alert">Shapes the image to a thumbnail</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--VIDEOS-->
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h4>VIDEOS</h4>
+			</div>
+			<div class="panel-body">
+				<div class="row">					
+					<div style="text-align:center"> 
+						<button id="playStop" class="btn btn-success" onclick="playPause()">Play</button> 
+						<button class="btn btn-warning" onclick="makeBig()">Big</button>
+						<button class="btn btn-info" onclick="makeSmall()">Small</button>
+						<button class="btn btn-default" onclick="makeNormal()">Normal</button>
+						<br><br>						
+						<video id="video1" width="420">
+							<source src="div.mp4" type="video/mp4">
+							<span class="alert alert-danger">Your browser does not support HTML5 video.</span>
+					  </video>
+					</div> 
+				</div>
+			</div>
+		</div>
+		<!--GEOLOCATION-->
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h4>GEOLOCATION</h4>
+			</div>
+			<div class="panel-body">
+				<div class="row">					
+					<p id="demo" class="alert alert-info">Click the button to get your position.</p>
+					<button onclick="getLocation()" class="btn btn-info">Try It </button>
+					<div class="jumbotron">
+						  <div class="container">
+								<div id="mapholder"></div>
+						  </div>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<!--CANVAS-->
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h4>CANVAS</h4>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<canvas id="myCanvas" width="800" height="300" style="border:1px solid #c3c3c3;"> Your browser does not support the HTML5 canvas tag. </canvas>
+					</div>
+				</div>
+				<br>
+					<span class="alert alert-info">Editable Text Canvas</span>
+					<br>
+					<br>
+					<br>
+				<div class="row">
+					<div class="col-md-12">
+						<canvas id="myCanvas1" width="800" height="100" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas><br>
+					</div>					
+				</div>
+				<br>
+					<span class="alert alert-info">Static Canvas</span>
+					<br>
+			</div>
+		</div>
+		<!--FORM-->
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h4>FORM</h4>
+			</div>
+			<div class="panel-body">
+				<div class="row">					
+									
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<h1>LOGOS</h1>
+	
+		<img src="devconlogo.png" />
+	<br>
+	
+	<h1>VIDEOS</h1>
 	<div style="text-align:center">          
 		<br><br>
 		<video id="video1" width="420" controls >
 			<source src="div.mp4" type="video/mp4">               
 			Your browser does not support HTML5 video.
 		</video>
-	</div> 
+	</div> 	
 	<br>
-	<h1>geolocation</h1>
+	
+	<h1>GEOLOCATION</h1>
 		<p id="demo">Click the button to get your position.</p>
 		<button onclick="getLocation()">Try It</button>
 		<div id="mapholder"></div>
 	<br>
-	<h1>canvas</h1>
-	<canvas id="myCanvas" width="300" height="300" style="border:1px solid #c3c3c3;">
-Your browser does not support the HTML5 canvas tag.
-</canvas>
-
-<canvas id="myCanvas1" width="200" height="100" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML5 canvas tag.</canvas>
-<br>
-	<h1>form</h1>
 	
+	<h1>CANVAS</h1>
+	<canvas id="myCanvas" width="300" height="300" style="border:1px solid #c3c3c3;"> Your browser does not support the HTML5 canvas tag. </canvas>
+
+	<canvas id="myCanvas1" width="200" height="100" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
+	<br>
+	
+	<h1>FORM</h1>
 	<form>
 		User name:<br>
 		<input type="text" name="username"><br>
@@ -43,8 +148,8 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 		<label class="item item-input">
 			<span class="input-label">Email</span>
 				<input type="email">
-			</label>
-			<br>
+		</label>
+		<br>
 			<label class="item item-input">
   <span class="input-label">Telephone</span>
   <input type="tel">
@@ -83,6 +188,38 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 
 		canvas.add(iTextSample);
 	});
+	
+	//videos
+	var myVideo = document.getElementById("video1"); 
+	function playPause() { 
+		if (myVideo.paused) 
+		{
+			myVideo.play(); 
+			$("#playStop").text("Play");
+			$("#playStop").removeClass("btn-danger");
+			$("#playStop").addClass("btn-success");
+		}			
+		else 
+		{
+			myVideo.pause(); 
+			$("#playStop").text("Pause");
+			$("#playStop").addClass("btn-danger");
+			$("#playStop").removeClass("btn-success");
+		}			
+	} 
+	
+	function makeBig() { 
+		myVideo.width = 560; 
+	} 
+
+	function makeSmall() { 
+		myVideo.width = 320; 
+	} 
+
+	function makeNormal() { 
+		myVideo.width = 420; 
+	} 
+	//end videos
 
 	var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
