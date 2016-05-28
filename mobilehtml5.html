@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title>Mobile HTML 5 Code Camp</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.2/fabric.min.js"></script>
+</head>
+<body>
+	<h1>logos</h1>
+	<img src="devconlogo.png" />
+	<br>
+	<h1>videos</h1>
+	<div style="text-align:center">          
+		<br><br>
+		<video id="video1" width="420" controls >
+			<source src="div.mp4" type="video/mp4">               
+			Your browser does not support HTML5 video.
+		</video>
+	</div> 
+	<br>
+	<h1>geolocation</h1>
+		<p id="demo">Click the button to get your position.</p>
+		<button onclick="getLocation()">Try It</button>
+		<div id="mapholder"></div>
+	<br>
+	<h1>canvas</h1>
+	<canvas id="myCanvas" width="300" height="300" style="border:1px solid #c3c3c3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<canvas id="myCanvas1" width="200" height="100" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+<br>
+	<h1>form</h1>
+	
+	<form>
+		User name:<br>
+		<input type="text" name="username"><br>
+		Password:<br>
+		<input type="password" name="psw"> 
+		<button type="button" onclick="alert('Hello World!')">Click Me!</button>
+		<br>
+		<label class="item item-input">
+			<span class="input-label">Email</span>
+				<input type="email">
+			</label>
+			<br>
+			<label class="item item-input">
+  <span class="input-label">Telephone</span>
+  <input type="tel">
+</label>
+	</form>
+<br>
+</body>
+<script>
+	$(document).ready(function(){
+	
+		var c = document.getElementById("myCanvas1");
+		var ctx = c.getContext("2d");
+		ctx.moveTo(0,0);
+		ctx.lineTo(200,100);
+		ctx.stroke();
+	
+		var canvas=new fabric.Canvas('myCanvas');
+
+		var iTextSample = new fabric.IText('hello\nworld', {
+		  left: 50,
+		  top: 50,
+		  fontFamily: 'Helvetica',
+		  fill: '#333',
+		  lineHeight: 1.1,
+		  styles: {
+			0: {
+			  0: { textDecoration: 'underline', fontSize: 80 },
+			  1: { textBackgroundColor: 'red' }
+			},
+			1: {
+			  0: { textBackgroundColor: 'rgba(0,255,0,0.5)' },
+			  4: { fontSize: 20 }
+			}
+		  }
+		});
+
+		canvas.add(iTextSample);
+	});
+
+	var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.fillStyle = "#FF0000";
+ctx.fillRect(0,0,150,75);
+
+	function getLocation() {
+	   
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition, showError);
+		} else {
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		}
+		
+		getLocation1();
+	}
+
+	function showPosition(position) {
+		var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+		
+		var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false";
+		alert("here");
+		console.log(position);
+		//Image img = new Image();
+		//img.src = img_url;
+		//img.onload = function(e){
+			
+		//	document.getElementById("mapholder").innerHTML = "<img src='" + img.src + "'>";
+		//};
+		document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
+		
+	}
+
+	function showError(error) {
+		switch(error.code) {
+			case error.PERMISSION_DENIED:
+				x.innerHTML = "User denied the request for Geolocation."
+				break;
+			case error.POSITION_UNAVAILABLE:
+				x.innerHTML = "Location information is unavailable."
+				break;
+			case error.TIMEOUT:
+				x.innerHTML = "The request to get user location timed out."
+				break;
+			case error.UNKNOWN_ERROR:
+				x.innerHTML = "An unknown error occurred."
+				break;
+		}
+	}
+	
+	var x1 = document.getElementById("demo");
+
+	function getLocation1() {
+		if (navigator.geolocation) {
+			navigator.geolocation.watchPosition(showPosition1);
+		} else { 
+			x1.innerHTML = "Geolocation is not supported by this browser.";}
+		}
+		
+	function showPosition1(position) {
+		x1.innerHTML="Latitude: " + position.coords.latitude + 
+		"<br>Longitude: " + position.coords.longitude;
+	}
+	
+	
+</script>
+</html>
